@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Alurmo</string>
+    <string name="team_name">%1$s Du Anyam</string>
+    <string name="slogan">Revolusi Digital \nUntuk Usaha Kreatif</string>
+    <string name="sign_up_label">Daftar</string>
+    <string name="sign_in_label">Masuk</string>
+    <string name="version_label">1.0.0</string>
+    <string name="email_input_label">Email</string>
+    <string name="email_input_hint">Masukan Email Anda</string>
+    <string name="password_input_label">Kata Sandi</string>
+    <string name="password_input_hint">Masukan Kata Sandi Anda</string>
+    <string name="password_requirement">Kata Sandi minimal 8 karakter</string>
+    <string name="sign_in_attention_label">Sudah memiliki akun?</string>
+    <string name="sign_up_attention_label">Belum memiliki akun?</string>
+    <string name="sign_up_with_google">Daftar dengan Google</string>
+    <string name="sign_in_with_google">Masuk dengan Google</string>
+    <string name="google_btn_label">%1$s dengan Google</string>
+    <string name="or_label">atau</string>
+    <string name="forgot_pass_btn">Lupa kata sandi?</string>
+    <string name="sign_in_splash_screen_label">Selamat anda sudah berhasil masuk</string>
+    <string name="sign_in_splash_screen_content">
+        Mari rencanakan segala kegiatan bisnis anda dengan lebih efektif
+    </string>
+</resources>
