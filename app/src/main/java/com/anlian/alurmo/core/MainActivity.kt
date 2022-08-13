@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import com.anlian.alurmo.ui.AuthNavigation
+import com.anlian.alurmo.ui.navigations.AuthNavigation
 import com.anlian.alurmo.ui.theme.AlurmoTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -38,6 +38,11 @@ class MainActivity : ComponentActivity() {
 fun DefaultPreview() {
     AlurmoTheme {
         val navController = rememberNavController()
-        AuthNavigation(navController)
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            AuthNavigation(navController)
+        }
     }
 }

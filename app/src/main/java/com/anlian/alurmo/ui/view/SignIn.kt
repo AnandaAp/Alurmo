@@ -19,7 +19,6 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.anlian.alurmo.R
 
-@Preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignIn() {

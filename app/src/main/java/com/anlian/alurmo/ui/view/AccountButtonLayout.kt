@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -16,13 +17,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.ViewModel
 import com.anlian.alurmo.R
+import com.anlian.alurmo.viewmodel.SignInViewModel
+import com.anlian.alurmo.viewmodel.SignUpViewModel
 
 @Composable
 fun AccountButtonLayout(
     btnLabel: String,
-    lowerRowText: String
+    lowerRowText: String,
+    signUpViewModel: SignUpViewModel = hiltViewModel(),
+    signInViewModel: SignInViewModel = hiltViewModel()
 ) {
+    val context = LocalContext.current
+
     ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
         val (
             upperBtn,
@@ -33,7 +42,16 @@ fun AccountButtonLayout(
             lowerBtn
         ) = createRefs()
         Button(
-            onClick = {  },
+            onClick = {
+                when(btnLabel){
+                    context.resources.getString(R.string.sign_up_label) -> {
+                        signUpViewModel
+                    }
+                    context.resources.getString(R.string.sign_in_label) -> {
+                        signInViewModel
+                    }
+                }
+            },
             modifier = Modifier.constrainAs(upperBtn) {
                 top.linkTo(parent.top)
                 start.linkTo(parent.start)

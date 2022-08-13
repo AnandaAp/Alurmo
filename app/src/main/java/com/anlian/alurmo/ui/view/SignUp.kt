@@ -12,12 +12,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.anlian.alurmo.R
+import com.anlian.alurmo.viewmodel.SignUpViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview
 @Composable
-fun SignUp() {
+fun SignUp(navController: NavHostController) {
+    val viewModel = hiltViewModel<SignUpViewModel>()
     val email = remember { mutableStateOf("") }
     val pass = remember { mutableStateOf("") }
     val focusManager = LocalFocusManager.current
