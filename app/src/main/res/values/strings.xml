@@ -21,4 +21,8 @@
     <string name="sign_in_splash_screen_content">
         Mari rencanakan segala kegiatan bisnis anda dengan lebih efektif
     </string>
+    <string name="success_sign_in_message">Berhasil Masuk</string>
+    <string name="failed_sign_in_message">Gagal Masuk\nPastikan email atau kata sandi anda benar</string>
+    <string name="web_client_id">596007480779-hsfib4cle7d3ao3p6s2vjkvka6ud7nea.apps.googleusercontent.com</string>
+    <string name="loading_message">Tunggu Sebentar</string>
 </resources>

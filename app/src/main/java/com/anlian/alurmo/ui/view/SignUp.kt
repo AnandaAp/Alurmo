@@ -1,30 +1,42 @@
 package com.anlian.alurmo.ui.view
 
-import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.anlian.alurmo.R
+import com.anlian.alurmo.models.Account
+import com.anlian.alurmo.ui.states.AuthState
 import com.anlian.alurmo.viewmodel.SignUpViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SignUp(navController: NavHostController) {
+fun SignUp(
+    navController: NavHostController,
+    authState: AuthState
+) {
     val viewModel = hiltViewModel<SignUpViewModel>()
     val email = remember { mutableStateOf("") }
     val pass = remember { mutableStateOf("") }
     val focusManager = LocalFocusManager.current
     val togglePass = remember { mutableStateOf(false) }
+    val inputState = viewModel.inputState.collectAsState()
+    val signUpState = viewModel.signUpState.collectAsState()
 
     Scaffold(
         topBar = { TopBar(stringResource(id = R.string.sign_up_label)) }
@@ -63,6 +75,8 @@ fun SignUp(navController: NavHostController) {
                 InputField(
                     email = email,
                     pass = pass,
+//                    state = inputState,
+                    viewModel = viewModel,
                     focusManager = focusManager,
                     togglePass = togglePass
                 )
@@ -77,8 +91,11 @@ fun SignUp(navController: NavHostController) {
                     }
             ){
                 AccountButtonLayout(
-                    btnLabel = stringResource(id = R.string.sign_up_label),
-                    lowerRowText = stringResource(id = R.string.sign_in_attention_label)
+                    code = authState,
+                    account = Account(email = email.value, password = pass.value),
+                    navController = navController,
+                    lowerRowText = stringResource(id = R.string.sign_in_attention_label),
+                    signUpViewModel = viewModel
                 )
             }
         }
